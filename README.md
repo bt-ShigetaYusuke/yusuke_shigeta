@@ -28,6 +28,10 @@ cd backend
 
 💡 ヒント: 毎回 ./vendor/bin/sail と打つのは面倒なので、alias sail="./vendor/bin/sail" と設定しておくと、次から sail up だけで起動できるようになる。
 
+テーブルがないよってエラーが出たら以下を叩いてみる
+
+./vendor/bin/sail artisan migrate
+
 4. Next.jsを準備する
 
 Laravelコンテナが動いている状態で、別のターミナルを開き、Laravelの「外側」にNext.jsを作る。
@@ -39,7 +43,9 @@ npx create-next-app@latest frontend
 
 5. コンテナと通信するための「魔法の設定」
 
-ここが一番のポイントです。Docker（Laravel）とローカル（Next.js）は「住んでいる世界」が違うので、Next.jsからLaravelにアクセスする際は、Laravel側で**CORS（通信許可）**の設定が必要。
+ここが一番のポイント。
+Docker（Laravel）とローカル（Next.js）は「住んでいる世界」が違うので、
+Next.jsからLaravelにアクセスする際は、Laravel側で「CORS（通信許可）」の設定が必要。
 
 ① Laravel側の設定 (backend/.env)
 Next.js（ポート3000）からの通信を許可。
