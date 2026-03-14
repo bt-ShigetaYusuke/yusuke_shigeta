@@ -60,7 +60,8 @@ Laravel側でAPIを作る。
 
 ```bash
 # コンテナの中でコマンドを実行
-sail artisan install:api
+docker exec -it backend-laravel.test-1 bash
+php artisan install:api
 ```
 
 routes/api.php にテスト用コードを書く。
@@ -90,3 +91,5 @@ export default async function Home() {
   );
 }
 ```
+
+`npm run dev`で起動
